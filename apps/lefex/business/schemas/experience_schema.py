@@ -9,6 +9,7 @@ class ExperienceCreate(BaseModel):
     experience : Annotated[str, ExperienceField]
 
 class ExperienceRead(BaseModel):
+    id : int
     decision : str
     experience : str
 
