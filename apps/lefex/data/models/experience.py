@@ -1,7 +1,9 @@
-from sqlmodel import SQLModel, Field
+from sqlalchemy.orm import DeclarativeBase,Mapped,mapped_column
 
+class SQLAlchemyBase(DeclarativeBase):
+    pass
 
-class Experience(SQLModel, table = True):
-    id : int = Field(primary_key=True,)
-    decision : str = Field(min_length=1, max_length=1024, nullable=False)
-    experience : str = Field(min_length=1, max_length=2048, nullable=False)
+class Experience(SQLAlchemyBase):
+    id : Mapped[int] = mapped_column(primary_key=True)
+    decision : Mapped[str] = mapped_column(min_length=1, max_length=1024, nullable=False)
+    experience : Mapped[str] = mapped_column(min_length=1, max_length=2048, nullable=False)
