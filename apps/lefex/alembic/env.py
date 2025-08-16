@@ -1,8 +1,18 @@
+import os
+from typing import AnyStr
+import sys
+def get_current_path_parent(path : AnyStr, depth = 1):
+    if depth == 0:
+        return path
+    else:
+        path = os.path.dirname(path)
+        return get_current_path_parent(path = path ,depth = depth - 1)
+
 from logging.config import fileConfig
 
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
-from apps.lefex.data.models.experience import SQLModel
+from apps.lefex.data.models.experience import S
 from alembic import context
 
 from apps.lefex.di.general_provider import DependencyProvider
