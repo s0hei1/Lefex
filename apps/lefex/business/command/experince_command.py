@@ -1,10 +1,15 @@
 from sqlalchemy.ext.asyncio import AsyncSession
+from apps.lefex.data.models.experience import Experience
 
-class ExperienceRepository:
 
-    def __init__(self, session : AsyncSession):
-        self.session = session
+class ExperienceCommand:
 
-    async def create(self, experience : AsyncSession):
-        self.session.add(experience)
-        await self.session.commit()
+    def __init__(self, db : AsyncSession):
+        self.db = db
+
+    async def create(self, experience : Experience):
+        self.db.add(experience)
+        await self.db.commit()
+
+    async  def Update(self, experience : Experience):
+        self.db.add(experience)
